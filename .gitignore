@@ -1,0 +1,11 @@
+__pycache__/
+agregador_component/frontend/node_modules/
+agregador_component/frontend/public/dev-payload.json
+# ATENÇÃO: NÃO ignore agregador_component/frontend/build/ — o Streamlit Cloud não roda npm,
+# então o build compilado precisa estar no repositório.
+
+# SEGURANÇA — nunca versionar segredos
+.streamlit/secrets.toml
+.env
+*.pem
+*.key

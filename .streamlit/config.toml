@@ -1,0 +1,19 @@
+# Configuração de segurança do Streamlit (vale local e no Streamlit Cloud)
+
+[server]
+enableXsrfProtection = true     # token anti-CSRF nas requisições ao servidor
+enableCORS = true               # outros sites não podem chamar o servidor do app pelo navegador
+enableStaticServing = false     # não expõe arquivos da pasta (planilhas!) por URL
+maxUploadSize = 1               # o site não recebe uploads: limite mínimo
+maxMessageSize = 50
+headless = true
+
+[client]
+showErrorDetails = false        # visitante nunca vê traceback/caminhos do servidor; o erro completo fica no log
+toolbarMode = "minimal"         # esconde menu de desenvolvedor para visitantes
+
+[browser]
+gatherUsageStats = false
+
+[runner]
+fastReruns = true

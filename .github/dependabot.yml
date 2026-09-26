@@ -1,0 +1,13 @@
+# O GitHub abre Pull Requests automáticos quando sai correção de segurança para alguma dependência.
+version: 2
+updates:
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule: { interval: "weekly" }
+  - package-ecosystem: "npm"
+    directory: "/agregador_component/frontend"
+    schedule: { interval: "weekly" }
+    # depois de aceitar um PR do npm: npm install && npm run build, e commitar a pasta build/
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: { interval: "monthly" }
