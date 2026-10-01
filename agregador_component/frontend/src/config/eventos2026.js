@@ -16,11 +16,14 @@ export const EVENTOS_2026 = {
       // Mendonça libera ao plenário análise de relatório com mensagens de Moraes e Vorcaro
       { x: 'set/26_poderdata_1', y: 52, text: 'Mendonça<br>retira<br>sigilo<br>relatório<br>PF', arrow: false, ax: 0, ay: 40 },
       // Independência / manifestações de 7 de setembro
-      { x: 'set/26_quaest_1', y: 64, text: '7 de<br>setembro', arrow: false, ax: 0, ay: 40 },
+      //{ x: 'set/26_quaest_1', y: 64, text: '7 de<br>setembro', arrow: false, ax: 0, ay: 40 },
+      // Polêmica da Nosa Senhora Aparecida
+      { x: 'set/26_poderdata_4', y: 60, text: 'Caso<br>Nossa<br>Senhora<br>Aparecida', arrow: false, ax: 0, ay: 40 },
     ],
     linhas: [
       { x: 'set/26_poderdata_1', w: 0.5, ate: 52 },
-      { x: 'set/26_quaest_1', w: 0.5, ate: 64 },
+      //{ x: 'set/26_quaest_1', w: 0.5, ate: 64 },
+      { x: 'set/26_poderdata_4', w: 0.5, ate: 60 },
     ],
   },
   // exemplo de marco só no gráfico geral do 1º turno:

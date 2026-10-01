@@ -74,54 +74,42 @@ export function ListaPesquisas({ rows, arquivo }) {
 
 export default function Info({ rows, rows2026 = [], mM, mM15 }) {
   const institutos = unicos([...rows, ...rows2026].map((r) => r.nome_instituto)).sort()
+  const institutos2026 = unicos(rows2026.map((r) => r.nome_instituto)).sort()
   const nomes = (lista) => lista.map(nomeInstituto).join(', ')
   const faixa = (col) => <>{minimo(rows, col)}% e {maximo(rows, col)}%</>
+  const faixa2026 = (col) => <>{minimo(rows2026, col)}% e {maximo(rows2026, col)}%</>
 
   return (
     <section className="info">
       <div className="coluna-central">
         <Faixa>Informações sobre o agregador:</Faixa>
-
-        <Expander titulo="Descubra aqui como o agregador foi construído">
-          <div className="metodologia">
-            <p className="centro"><b>Explicação:</b></p>
-            <p>1. O banco de dados é atualizado constantemente com informações sobre a intenção de voto e a rejeição dos candidatos por religião.</p>
-            <p>2. Os institutos de pesquisa consultados são: {nomes(institutos)};</p>
-            <p>3. O agregador de pesquisas por religião compila os dados de levantamentos nacionais realizados pelos institutos. Para as eleições de 2022 e 2026 os dados foram coletados a partir de janeiro;</p>
-            <p>4. O agregador permite também a pesquisa por Instituto separadamente. Não nos responsabilizamos pelas amostras ou técnicas utilizadas pelos diversos institutos;</p>
-            <p>5. Para a composição do banco de dados são consideradas apenas pesquisas nacionais, bem como informações dos candidatos no primeiro e no segundo turnos das eleições presidenciais.</p>
-            <p>6. Devido à irregularidade na coleta e ao tamanho da amostra, dados referentes a segmentos demograficamente minoritários tal como candomblé/umbanda e outros apresentam margens de erro maiores, uma vez que a amostra destas religiões não é representativa do conjunto da população brasileira. Assim, quando possível, decidiu-se incluí-las na categoria "Outras religiosidades". Os institutos de pesquisa não divulgaram as intenções de voto da categoria espíritas no segundo das eleições, por esse motivo não há gráficos do segmento;</p>
-            <p>7. Vale destacar que os dados censitários, principais referências para a construção da amostragem das pesquisas, estão defasados. Os valores de amostragem variam conforme os critérios próprios de cada instituto de pesquisa. Os institutos em 2022 utilizara dados o IBGE de 2010, da PNAD de 2021 e 2022 e do TSE. As informações de corte religioso nem sempre estão disponíveis nas pesquisas compartilhadas publicamente ou não constam nos documentos registrados no sistema <a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noreferrer">PesqEle</a> mantido pelo TSE, dado que não é obrigatório, segundo o artigo 33 da <a href="https://www.tse.jus.br/legislacao/codigo-eleitoral/lei-das-eleicoes/sumario-lei-das-eleicoes-lei-nb0-9.504-de-30-de-setembro-de-1997" target="_blank" rel="noreferrer">Lei nº 9.504/1997</a>. Para termos uma noção do universo amostrado pelos institutos: os <i>católicos</i> variaram entre {faixa('am_cat')} dos entrevistados; os <i>evangélicos</i>, entre {faixa('am_ev')}; os <i>espíritas</i>, entre {faixa('am_espi')}; o <i>candomblé/umbanda</i>, entre {faixa('am_umb_can')}; <i>"outras religiosidades"</i>, entre {faixa('am_out')}; os <i>sem religião</i>, entre {faixa('am_non')}; e <i>os ateus</i>, entre {faixa('am_ateu')}.</p>
-            <p>8. Em relação às pesquisas, considerou-se a última data quando os entrevistadores colheram as respostas e não a data da divulgação, que por interesses diversos, podem ser adiadas por semanas;</p>
-            <p>9. Partindo da data da última coleta das pesquisas, calculou-se a média móvel de diversas variáveis correspondendo a {mM} dias. Para o caso da rejeição geral utilizou-se a média móvel de {mM15} dias;</p>
-            <p>10. Para obter a média móvel foram usados dados de uma série temporal e aplicado o seguinte código Python <code>rolling().mean()</code>. Uma explicação detalhada da utilização deste código pode ser <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html" target="_blank" rel="noreferrer">vista aqui</a>;</p>
-            <p>11. Ao calcular a média móvel de {mM} dias, por exemplo, os {mM} primeiros resultados são omitidos da série temporal e não aparecem nos gráficos. O objetivo principal da aplicação deste método é reduzir as oscilações no intuito de deixar as linhas dos gráficos mais fluídas. Existem algumas técnicas estatísticas que reduzem o ruído dos dados da série temporal, tais como <i>weighted moving average, kernel smoother</i>, entre outras;</p>
-            <p>12. O resumo das médias móveis apresentado no primeiro e no segundo turnos considera e mostra o último valor da média obtida para cada candidato. O dado é atualizado automaticamente à medida que novas pesquisas são inseridas no banco de dados;</p>
-            <p>13. Para deixar os gráficos limpos optou-se por não inserir a margem de erro na linha da média móvel. Nos recortes por religião a margem de erro nas eleições de 2022 variou entre 2% até 8,5%, de acordo com os institutos. Uma lista com as informações amostrais de cada pesquisa, por eleição, incluindo a margem de erro, pode ser obtida no item "pesquisas eleitorais utilizadas";</p>
-            <p>14. As imagens dos candidatos utilizadas provêm das seguintes fontes: <a href="https://oglobo.globo.com/epoca/o-que-dizem-os-autores-dos-programas-dos-presidenciaveis-sobre-combate-as-mudancas-climaticas-23128520" target="_blank" rel="noreferrer">Ciro Gomes</a>, <a href="https://www.dw.com/pt-br/o-brasil-na-imprensa-alem%C3%A3-29-05/a-48968730/" target="_blank" rel="noreferrer">Lula</a>, <a href="https://www.poder360.com.br/poderdata/poderdata-lula-tem-50-contra-40-de-bolsonaro-no-2o-turno/" target="_blank" rel="noreferrer">Bolsonaro</a>.</p>
-          </div>
-        </Expander>
-
       </div>
 
       <div className="duas-colunas coluna-central">
         <Expander titulo="Veja como citar o agregador">
           <p className="centro">
-            ALMEIDA, Ronaldo de; GERARDI, Dirceu André. <b>Agregador de pesquisas eleitorais por religião</b>: consolidação
-            de dados de pesquisas eleitorais com recorte religioso às eleições presidenciais de 2022. APP versão 1.0. São
-            Paulo, 2022. Disponível em: https://www.larunicamp.com.br. Acesso em: 00/00/0000.
+            GERARDI, Dirceu André; ALMEIDA, Ronaldo de; RUIZ, Ian; <b>Agregador de pesquisas eleitorais por religião</b>: consolidação
+            de dados de pesquisas eleitorais com recorte religioso às eleições presidenciais de 2022 e 2026. APP versão 2.0. São
+            Paulo, 2026. Disponível em: https://www.larunicamp.com.br. Acesso em: 00/00/0000.
           </p>
         </Expander>
 
         <Expander titulo="Sobre nós">
           <div className="sobre">
             <p className="verde">
+              Laboratório de Antropologia da Religião (LAR/Unicamp)/<br />
               Projeto Temático FAPESP<br />"Religião como política: moralidades, ativismos e laicidades"<br /><br />
               Processo FAPESP: 2022/16673-3<br /><br />Laboratório de Antropologia da Religião (LAR/Unicamp)
             </p>
-            <p className="cinza">Coordenação:</p>
-            <p>Ronaldo de Almeida<br />(UNICAMP/CEBRAP/LAR)<br /><a href="mailto:ronaldormalmeida@gmail.com">email</a></p>
-            <p>Dirceu André Gerardi<br />(FGV LAW/FGV PROJETOS)<br /><a href="mailto:andregerardi3@gmail.com">email</a></p>
+            <p className="cinza">Pesquisador Responsável:</p>
+            <p>Ronaldo de Almeida<br />(Departamento de Antropologia/UNICAMP)<br /><a href="mailto:ronaldormalmeida@gmail.com">email</a></p>
+            <p className="cinza">Pesquisador Associado:</p>
+            <p>Dirceu André Gerardi<br />(MPGPP FGV/FGV PROJETOS)<br /><a href="mailto:andregerardi3@gmail.com">email</a></p>
+            <p className="cinza">Apoio Técnico:</p>
+            <p>Arthur Prates Domingos -(UNICAMP) - <a href="mailto:arthurpidomingos@gmail.com">email</a></p>
+            <p>Ian Victor Rubini Ruiz - (Unicamp) - <a href="mailto:ianvrr@gmail.com">email</a></p>            <p className="cinza">Apoio Técnico:</p>
+            <p>Victor Ernesto Merete Castilho - (UNICAMP) - <a href="mailto:ernestomerete@gmail.com">email</a></p>
+            <p>Yago Carvalho Rodrigues - (Consultoria) - <a href="mailto:yago.cr@hotmail.com">email</a></p>
           </div>
         </Expander>
       </div>
@@ -139,13 +127,40 @@ export function SobreBanco({ rows, prefixos, ano, arquivo, children }) {
   const institutos = unicos(rows.map((r) => r.nome_instituto)).sort()
   const porColeta = (tipo) => rows.filter((r) => String(r.tipo_coleta).trim().toLowerCase() === tipo)
   const n = (sufixo) => rows.filter((r) => prefixos.some((p) => typeof r[`${p}_${sufixo}`] === 'number' && r[`${p}_${sufixo}`] >= 1)).length
-  const recortes = [['Católicos', 'cat'], ['Evangélicos', 'ev'], ['Espíritas', 'espi'], ['Umbanda/Candomblé', 'umb_can'], ['Outras religiões', 'out'], ['Sem religião', 'non'], ['Ateus', 'ateu']]
+  const recortes = [['Católicos', 'cat'], ['Evangélicos', 'ev'], ['Espíritas', 'espi'], ['Umbanda/Candomblé', 'umb_can'], ['Outras religiosidades', 'out'], ['Sem religião', 'non'], ['Ateus', 'ateu']]
     .map(([rotulo, seg]) => [rotulo, n(`${seg}_1t`)])
     .filter(([, total]) => total > 0)
+  const faixa = (col) => <>{minimo(rows, col)}% e {maximo(rows, col)}%</>
+
+  const metodologiaConteudo = ano === '2026' ? (
+    <div className="metodologia">
+      <p>1. O banco de dados é atualizado constantemente com informações sobre a intenção de voto e a rejeição dos candidatos por religião.</p>
+      <p>2. Os institutos de pesquisa consultados são: {nomes(institutos)};</p>
+      <p>3. O agregador de pesquisas por religião compila os dados de levantamentos nacionais em relação a duas variáveis eleitorais centrais: a intenção de voto e a rejeição à candidatura. Para as eleições de 2026, os dados foram coletados a partir de janeiro;</p>
+      <p>4. O agregador permite também a pesquisa por Instituto separadamente. Não nos responsabilizamos pelas amostras ou técnicas utilizadas pelos diversos institutos;</p>
+      <p>5. Para a composição do banco de dados são consideradas apenas pesquisas nacionais, bem como informações dos candidatos no primeiro e no segundo turnos das eleições presidenciais.</p>
+      <p>6. Devido à irregularidade na coleta e ao tamanho da amostra, dados referentes a segmentos demograficamente minoritários tal como candomblé/umbanda e outros apresentam margens de erro maiores, uma vez que a amostra destas religiões não é representativa do conjunto da população brasileira. Assim, quando possível, decidiu-se incluí-las na categoria "Outras religiosidades". Os institutos de pesquisa não divulgaram as intenções de voto da categoria espíritas no segundo das eleições, por esse motivo não há gráficos do segmento;</p>
+      <p>7. Os dados censitários utilizam informações do Censo 2022 (IBGE),da PNADc de 2025 e do TSE para a composição das amostra. Os valores de amostragem variam conforme os critérios próprios de cada instituto de pesquisa. As informações de corte religioso nem sempre estão disponíveis nas pesquisas compartilhadas publicamente ou não constam nos documentos registrados no sistema <a href="https://www.tse.jus.br/eleicoes/pesquisa-eleitorais/consulta-as-pesquisas-registradas" target="_blank" rel="noreferrer">PesqEle</a> mantido pelo TSE, dado que não é obrigatório, segundo o artigo 33 da <a href="https://www.tse.jus.br/legislacao/codigo-eleitoral/lei-das-eleicoes/sumario-lei-das-eleicoes-lei-nb0-9.504-de-30-de-setembro-de-1997" target="_blank" rel="noreferrer">Lei nº 9.504/1997</a>. Para termos uma noção do universo amostrado pelos institutos: os <i>católicos</i> variaram entre {faixa('am_cat')} dos entrevistados; os <i>evangélicos</i>, entre {faixa('am_ev')}; os <i>espíritas</i>, entre {faixa('am_espi')}; o <i>candomblé/umbanda</i>, entre {faixa('am_umb_can')}; <i>"outras religiosidades"</i>, entre {faixa('am_out')}; os <i>sem religião</i>, entre {faixa('am_non')}; e <i>os ateus</i>, entre {faixa('am_ateu')}.</p>
+      <p>8. Em relação às pesquisas, considerou-se a última data quando os entrevistadores colheram as respostas e não a data da divulgação, que por interesses diversos, podem ser adiadas por semanas;</p>
+      <p>9. Partindo da data da última coleta das pesquisas, calculou-se a média móvel de diversas variáveis correspondendo a dias variáveis. Para o caso da rejeição geral utilizou-se a média móvel de dias variáveis;</p>
+      <p>10. Para obter a média móvel foram usados dados de uma série temporal e aplicado o seguinte código Python <code>rolling().mean()</code>. Uma explicação detalhada da utilização deste código pode ser <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.rolling.html" target="_blank" rel="noreferrer">vista aqui</a>;</p>
+      <p>11. Ao calcular a média móvel, os primeiros resultados são omitidos da série temporal e não aparecem nos gráficos. O objetivo principal da aplicação deste método é reduzir as oscilações no intuito de deixar as linhas dos gráficos mais fluídas. Existem algumas técnicas estatísticas que reduzem o ruído dos dados da série temporal, tais como <i>weighted moving average, kernel smoother</i>, entre outras;</p>
+      <p>12. O resumo das médias móveis apresentado no primeiro e no segundo turnos considera e mostra o último valor da média obtida para cada candidato. O dado é atualizado automaticamente à medida que novas pesquisas são inseridas no banco de dados;</p>
+      <p>13. Para deixar os gráficos mais limpos optou-se por não inserir a margem de erro na linha da média móvel. Nos recortes por religião a margem de erro nas eleições de 2026 variou entre 2% até 8,5%, de acordo com os institutos. Uma lista com as informações amostrais de cada pesquisa, por eleição, incluindo a margem de erro, pode ser obtida no item "pesquisas eleitorais utilizadas";</p>
+      <p>14. As imagens dos candidatos utilizadas provêm das seguintes fontes: <a href="https://www.dw.com/pt-br/o-brasil-na-imprensa-alem%C3%A3-29-05/a-48968730/" target="_blank" rel="noreferrer">Lula</a>, <a href="https://www.poder360.com.br/poder-eleicoes/flavio-bolsonaro-vai-aos-eua-e-aguarda-reuniao-com-trump/" target="_blank" rel="noreferrer">Flávio Bolsonaro</a>, <a href="https://www.sinjus.org.br/apos-aumentar-o-proprio-salario-em-300-zema-quer-congelar-salarios-dos-servidores-por-9-anos/" target="_blank" rel="noreferrer">Romeu Zema</a>, <a href="https://agenciauva.net/2026/09/06/toffoli-libera-campanha-de-renan-santos-dois-dias-apos-suspensao/" target="_blank" rel="noreferrer">Renan Dantas</a>, <a href="https://infograficos.oglobo.globo.com/politica/tem-que-ler-persona-ronaldo-caiado.html" target="_blank" rel="noreferrer">Ronaldo Caiado</a>, <a href="https://exame.com/brasil/quaest-com-10-no-1o-turno-de-quem-augusto-cury-roubou-votos/" target="_blank" rel="noreferrer">Augusto Cury</a>.</p>
+    </div>
+  ) : (
+    <div className="metodologia">
+      <p>Metodologia detalhada para a eleição de {ano}</p>
+    </div>
+  )
 
   return (
     <section className="sobre-banco coluna-central" aria-label={`Sobre o banco de ${ano}`}>
       {children}
+      <Expander titulo="Descubra aqui como o agregador foi construído">
+        {metodologiaConteudo}
+      </Expander>
       <Expander titulo={`Verifique as pesquisas eleitorais utilizadas (${ano})`}>
         <ListaPesquisas rows={rows} arquivo={arquivo} />
       </Expander>

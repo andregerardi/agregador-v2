@@ -28,17 +28,7 @@ export default function Eleicao2026({ dados, config, irPara }) {
         <Aviso>Não foi possível carregar o banco de 2026 no momento.</Aviso>
       ) : (
         <>
-          <SobreBanco rows={rows} prefixos={Object.keys(CAND)} ano="2026" arquivo="lista_2026.csv">
-            <Expander titulo="Informações sobre o banco de 2026">
-              <div className="metodologia">
-                <p>1. O banco de 2026 é atualizado continuamente e reúne as pesquisas nacionais com recorte religioso;</p>
-                <p>2. Candidatos acompanhados: {Object.values(CAND).map((c) => c.nome).join(', ')};</p>
-                <p>3. Institutos considerados: {unicos(rows.map((r) => r.nome_instituto)).sort().map(nomeInstituto).join(', ')};</p>
-                <p>4. Total de pesquisas mapeadas: {rows.length};</p>
-                <p>5. Fonte dos dados: {origem}.</p>
-              </div>
-            </Expander>
-          </SobreBanco>
+          <SobreBanco rows={rows} prefixos={Object.keys(CAND)} ano="2026" arquivo="lista_2026.csv" />
           <Divisor />
 
           <Turno key={turno} turno={turno} dados={dados} config={config} />

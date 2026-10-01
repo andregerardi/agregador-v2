@@ -63,26 +63,26 @@ INSTITUTOS_FORA_2026 = ['prpesquisas']
 ## candidatos de 2022. Para alterar nome exibido, cor da linha ou escala dos pontos, edite aqui.
 ## escalas disponíveis no frontend: peach, ice, Oranges, Greens, Purples, Greys
 CAND_2022 = {
-    'lul':    {'nome': 'Lula',       'cor': 'rgba(215, 0, 0, 0.8)', 'escala': 'peach'},
-    'bol':    {'nome': 'Bolsonaro',  'cor': 'royalblue',            'escala': 'ice'},
-    'ciro':   {'nome': 'Ciro Gomes', 'cor': '#FFB233',              'escala': 'Greys'},
+    'lul':    {'nome': 'Lula',              'cor': 'rgba(215, 0, 0, 0.8)', 'escala': 'peach'},
+    'bol':    {'nome': 'Jair Bolsonaro',    'cor': 'royalblue',            'escala': 'ice'},
+    'ciro':   {'nome': 'Ciro Gomes',        'cor': '#FFB233',              'escala': 'Greys'},
 }
 
 ## candidatos de 2026. Para alterar nome exibido, cor da linha ou escala dos pontos, edite aqui.
 ## escalas disponíveis no frontend: peach, ice, Oranges, Greens, Purples, Greys
 CAND_2026 = {
-    'lul':    {'nome': 'Lula',           'cor': 'rgba(215, 0, 0, 0.8)', 'escala': 'peach'},
-    'bol':    {'nome': 'Flávio',         'cor': 'royalblue',            'escala': 'ice'},
-    'caiado': {'nome': 'Ronaldo Caiado', 'cor': '#FF6B35',              'escala': 'Oranges'},
-    'cury':   {'nome': 'Augusto Cury',   'cor': '#FFA500',              'escala': 'Greys'},
-    'zema':   {'nome': 'Romeu Zema',     'cor': 'seagreen',             'escala': 'Greens'},
-    'renan':  {'nome': 'Renan',          'cor': '#7B4FBF',              'escala': 'Purples'},
+    'lul':    {'nome': 'Lula',                      'cor': 'rgba(215, 0, 0, 0.8)', 'escala': 'peach'},
+    'bol':    {'nome': 'Flávio Bolsonaro',          'cor': 'royalblue',            'escala': 'ice'},
+    'caiado': {'nome': 'Ronaldo Caiado',            'cor': '#FF6B35',              'escala': 'Oranges'},
+    'cury':   {'nome': 'Augusto Cury',              'cor': '#FFA500',              'escala': 'Greys'},
+    'zema':   {'nome': 'Romeu Zema',                'cor': 'seagreen',             'escala': 'Greens'},
+    'renan':  {'nome': 'Renan Dantas',              'cor': '#7B4FBF',              'escala': 'Purples'},
 }
 
 ## segmentos religiosos (sufixos das colunas da planilha)
 SEG_2026 = {
     'ger': 'Geral', 'cat': 'Católicos', 'ev': 'Evangélicos', 'espi': 'Espíritas',
-    'umb_can': 'Umb./Cand.', 'out': 'Outros', 'non': 'Sem religião', 'ateu': 'Ateus',
+    'umb_can': 'Umb./Cand.', 'out': 'Otras religiosidades', 'non': 'Sem religião', 'ateu': 'Ateus',
 }
 
 ## imagens de perfil (opcionais): basta acrescentar o arquivo na pasta e mapear aqui
