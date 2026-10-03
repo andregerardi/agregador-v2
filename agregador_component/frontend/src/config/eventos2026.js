@@ -14,7 +14,7 @@ export const EVENTOS_2026 = {
   '*': {
     anotacoes: [
       // Mendonça libera ao plenário análise de relatório com mensagens de Moraes e Vorcaro
-      { x: 'set/26_poderdata_1', y: 52, text: 'Mendonça<br>retira<br>sigilo<br>relatório<br>PF', arrow: false, ax: 0, ay: 40 },
+      { x: 'set/26_poderdata_1', y: 52, text: 'Mendonça retira<br>sigilo de<br>relatório da PF', arrow: false, ax: 0, ay: 40 },
       // Independência / manifestações de 7 de setembro
       //{ x: 'set/26_quaest_1', y: 64, text: '7 de<br>setembro', arrow: false, ax: 0, ay: 40 },
       // Polêmica da Nosa Senhora Aparecida
