@@ -76,7 +76,7 @@ CAND_2026 = {
     'caiado': {'nome': 'Ronaldo Caiado',            'cor': '#FF6B35',              'escala': 'Oranges'},
     'cury':   {'nome': 'Augusto Cury',              'cor': '#FFA500',              'escala': 'Greys'},
     'zema':   {'nome': 'Romeu Zema',                'cor': 'seagreen',             'escala': 'Greens'},
-    'renan':  {'nome': 'Renan Dantas',              'cor': '#7B4FBF',              'escala': 'Purples'},
+    'renan':  {'nome': 'Renan Santos',              'cor': '#7B4FBF',              'escala': 'Purples'},
 }
 
 ## segmentos religiosos (sufixos das colunas da planilha)
