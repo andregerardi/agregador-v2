@@ -107,7 +107,7 @@ export default function Info({ rows, rows2026 = [], mM, mM15 }) {
             <p>Dirceu André Gerardi<br />(MPGPP FGV/FGV PROJETOS)<br /><a href="mailto:andregerardi3@gmail.com">email</a></p>
             <p className="cinza">Apoio Técnico:</p>
             <p>Arthur Prates Domingos -(UNICAMP) - <a href="mailto:arthurpidomingos@gmail.com">email</a></p>
-            <p>Ian Victor Rubini Ruiz - (Unicamp) - <a href="mailto:ianvrr@gmail.com">email</a></p>            <p className="cinza">Apoio Técnico:</p>
+            <p>Ian Victor Rubini Ruiz - (Unicamp) - <a href="mailto:ianvrr@gmail.com">email</a></p>
             <p>Victor Ernesto Merete Castilho - (UNICAMP) - <a href="mailto:ernestomerete@gmail.com">email</a></p>
             <p>Yago Carvalho Rodrigues - (Consultoria) - <a href="mailto:yago.cr@hotmail.com">email</a></p>
           </div>
